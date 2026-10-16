@@ -3113,6 +3113,8 @@ with pkgs;
 
   fasm = pkgsi686Linux.callPackage ../development/compilers/fasm {
     inherit (stdenv.hostPlatform) isx86_64;
+    # Use the native fasm-bin update script to avoid an i686 build of nix-update.
+    inherit (fasm-bin) updateScript;
   };
   fasm-bin = callPackage ../development/compilers/fasm/bin.nix { };
 
